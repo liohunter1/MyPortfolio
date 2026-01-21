@@ -1,4 +1,3 @@
-import React from 'react';
 import { Lock, Terminal, Database } from 'lucide-react';
 import { PhoenixIcon } from './icons/Phoenix';
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, type ComponentType } from 'react';
 import { Lock, Terminal, Network, Github, ExternalLink, Star, GitFork } from 'lucide-react';
 import { PhoenixIcon } from './icons/Phoenix';
 
@@ -12,6 +12,7 @@ interface GitHubRepo {
   stargazers_count: number;
   forks_count: number;
   language: string | null;
+  fork?: boolean;
 }
 
 interface Project {
@@ -19,7 +20,7 @@ interface Project {
   title: string;
   description: string;
   tech: string[];
-  icon: React.ComponentType<{ className?: string }>;
+  icon: ComponentType<{ className?: string }>;
   github: string;
   demo: string | null;
   stars: number;
