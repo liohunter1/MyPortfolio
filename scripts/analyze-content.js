@@ -15,15 +15,10 @@ const GITHUB_USERNAME = 'liohunter1';
 const ARTICLES_REPO = 'MyArticles-Blogs';
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
+// If no key is present, skip analysis but do NOT fail the build
 if (!GEMINI_API_KEY) {
-  console.error('❌ Error: GEMINI_API_KEY not found in environment variables');
-  console.log('\n📝 To get your API key:');
-  console.log('1. Visit: https://aistudio.google.com/app/apikey');
-  console.log('2. Click "Create API Key"');
-  console.log('3. Copy the key');
-  console.log('4. Create a .env file in the project root');
-  console.log('5. Add: GEMINI_API_KEY=your_api_key_here\n');
-  process.exit(1);
+  console.warn('⚠️  GEMINI_API_KEY not found; skipping content analysis. Build will continue.');
+  process.exit(0);
 }
 
 const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
